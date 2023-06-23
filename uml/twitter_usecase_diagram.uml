@@ -1,0 +1,26 @@
+left to right direction
+actor User
+actor Admin
+usecase "View Timeline" as UC1
+usecase "Follow User" as UC2
+usecase "Unfollow User" as UC3
+usecase "Post Tweet" as UC4
+usecase "Delete Tweet" as UC5
+usecase "Search Tweet" as UC6
+usecase "Block User" as UC7
+usecase "Report Tweet" as UC8
+usecase "Manage User" as UC9
+
+User --> UC1 : include
+User --> UC2 : include
+User --> UC3 : include
+User --> UC4 : include
+User --> UC5 : include
+User --> UC6 : include
+User --> UC7 : include
+User --> UC8 : include
+Admin --> UC9 : include
+UC9 --> UC2 : extends
+UC9 --> UC3 : extends
+UC9 --> UC7 : extends
+UC9 --> UC8 : extends
