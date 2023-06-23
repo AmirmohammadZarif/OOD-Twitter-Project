@@ -1,0 +1,39 @@
+// Amirmohammad Zarif
+// Department of Engineering, WTIAU
+// Object Oriented Design Course
+// Prof. Khoshroo
+
+// Twitter Use Case Diagram
+digraph {
+	graph [rankdir=LR]
+	subgraph cluster_Twitter_App {
+		node [shape=rectangle]
+		edge [arrowhead=open]
+		label="Twitter App" style=rounded
+		bgcolor=lightgray color=black fontcolor=black
+		User [shape=actor]
+		Admin [shape=actor]
+		"View Timeline" [shape=ellipse]
+		"Follow User" [shape=ellipse]
+		"Unfollow User" [shape=ellipse]
+		"Post Tweet" [shape=ellipse]
+		"Delete Tweet" [shape=ellipse]
+		"Search Tweet" [shape=ellipse]
+		"Block User" [shape=ellipse]
+		"Report Tweet" [shape=ellipse]
+		"Manage User" [shape=ellipse]
+		User -> "View Timeline" [label=include]
+		User -> "Follow User" [label=include]
+		User -> "Unfollow User" [label=include]
+		User -> "Post Tweet" [label=include]
+		User -> "Delete Tweet" [label=include]
+		User -> "Search Tweet" [label=include]
+		User -> "Block User" [label=include]
+		User -> "Report Tweet" [label=include]
+		Admin -> "Manage User" [label=include]
+		"Manage User" -> "Follow User" [label=extends]
+		"Manage User" -> "Unfollow User" [label=extends]
+		"Manage User" -> "Block User" [label=extends]
+		"Manage User" -> "Report Tweet" [label=extends]
+	}
+}
