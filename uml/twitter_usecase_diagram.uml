@@ -1,3 +1,4 @@
+package "Twitter App" {
 left to right direction
 actor User
 actor Admin
@@ -24,3 +25,5 @@ UC9 --> UC2 : extends
 UC9 --> UC3 : extends
 UC9 --> UC7 : extends
 UC9 --> UC8 : extends
+
+}
