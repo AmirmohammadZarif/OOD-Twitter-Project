@@ -1,0 +1,24 @@
+// Twitter Class Diagram
+digraph {
+	graph [rankdir=LR]
+	subgraph cluster_TwitterApp {
+		node [height=0 shape=rectangle width=0]
+		edge [arrowhead=open]
+		label=TwitterApp style=rounded
+		bgcolor=lightgray color=black fontcolor=black
+		Twitter [label="class Twitter\l-tweets: List<Tweet>\l-users: List<User>\l+addTweet(tweet: Tweet): void\l+deleteTweet(tweet: Tweet): void\l+searchTweets(keyword: String): List<Tweet>\l+followUser(user: User): void\l+unfollowUser(user: User): void"]
+		User [label="class User\l-username: String\l-password: String\l-email: String\l-tweets: List<Tweet>\l-followers: List<User>\l-following: List<User>\l+editProfile(username: String, password: String, email: String): void\l+createTweet(tweet: Tweet): void\l+deleteTweet(tweet: Tweet): void\l+getTweets(): List<Tweet>\l+getFollowers(): List<User>\l+getFollowing(): List<User>"]
+		Tweet [label="class Tweet\l-id: int\l-text: String\l-date: Date\l-user: User\l+getText(): String\l+getDate(): Date\l+getUser(): User"]
+		UserService [label="class UserService\l+registerUser(username: String, password: String, email: String): User\l+loginUser(username: String, password: String): boolean\l+logoutUser(): void\l+getUserById(id: int): User\l+getUserByUsername(username: String): User"]
+		TweetService [label="class TweetService\l+createTweet(text: String, user: User): Tweet\l+deleteTweet(tweet: Tweet): void\l+getTweetById(id: int): Tweet\l+searchTweets(keyword: String): List<Tweet>"]
+		FollowService [label="class FollowService\l+followUser(follower: User, following: User): void\l+unfollowUser(follower: User, following: User): void\l+getFollowers(user: User): List<User>\l+getFollowing(user: User): List<User>"]
+		NotificationService [label="class NotificationService\l+sendNotification(user: User, message: String): void"]
+		Twitter -> User
+		User -> Tweet
+		User -> UserService
+		Tweet -> TweetService
+		User -> FollowService
+		FollowService -> User [arrowhead=crow]
+		NotificationService -> User [arrowhead=crow]
+	}
+}

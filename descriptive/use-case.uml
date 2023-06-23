@@ -1,0 +1,104 @@
+left to right direction
+actor User as U
+rectangle "Twitter" {
+  usecase "Login" as UC1
+  usecase "Post tweet" as UC2
+  usecase "Follow user" as UC3
+  usecase "Search tweet" as UC4
+}
+
+rectangle "Login" {
+  usecase "Login" as UC1
+}
+UC1 -|> Twitter
+
+rectangle "Post tweet" {
+  usecase "Post tweet" as UC2
+}
+UC2 -|> Twitter
+
+rectangle "Follow user" {
+  usecase "Follow user" as UC3
+}
+UC3 -|> Twitter
+
+rectangle "Search tweet" {
+  usecase "Search tweet" as UC4
+}
+UC4 -|> Twitter
+
+rectangle "Login Description" {
+  usecase "Login" as UC1
+  UC1
+  --
+  Pre-conditions:
+  - The user has an account on Twitter
+  Actors:
+  - User
+  Flows:
+  - The user enters their username and password
+  - The system verifies the user's credentials
+  - The system logs the user in
+  Post-conditions:
+  - The user is logged in
+  Main flow:
+  1. The user enters their username and password
+  2. The system verifies the user's credentials
+  3. The system logs the user in
+}
+  
+rectangle "Post tweet Description" {
+  usecase "Post tweet" as UC2
+  UC2
+  --
+  Pre-conditions:
+  - The user is logged in
+  Actors:
+  - User
+  Flows:
+  - The user enters the tweet message
+  - The system posts the tweet
+  Post-conditions:
+  - The tweet is posted
+  Main flow:
+  1. The user enters the tweet message
+  2. The system posts the tweet
+}
+
+rectangle "Follow user Description" {
+  usecase "Follow user" as UC3
+  UC3
+  --
+  Pre-conditions:
+  - The user is logged in
+  Actors:
+  - User
+  Flows:
+  - The user searches for the user they want to follow
+  - The system displays the user's profile
+  - The user clicks the follow button
+  Post-conditions:
+  - The user is following the other user
+  Main flow:
+  1. The user searches for the user they want to follow
+  2. The system displays the user's profile
+  3. The user clicks the follow button
+}
+
+rectangle "Search tweet Description" {
+  usecase "Search tweet" as UC4
+  UC4
+  --
+  Pre-conditions:
+  - None
+  Actors:
+  - User
+  Flows:
+  - The user enters the search query
+  - The system displays the search results
+  Post-conditions:
+  - None
+  Main flow:
+  1. The user enters the search query
+  2. The system displays the search results
+}
