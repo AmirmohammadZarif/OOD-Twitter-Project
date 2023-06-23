@@ -1,0 +1,18 @@
+// Twitter Class Diagram
+digraph {
+	Tweet [label="Tweet
+- tweet_id: int
+- content: str
+- timestamp: datetime
+- author: User"]
+	User [label="User
+- user_id: int
+- username: str
+- tweets: List[Tweet]"]
+	Twitter [label="Twitter
+- users: List[User]"]
+	Tweet -> User
+	User -> Tweet [dir=back]
+	User -> Twitter
+	Twitter -> User [dir=back]
+}
