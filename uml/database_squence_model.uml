@@ -1,0 +1,11 @@
+actor User as U
+database "Twitter Database" as DB
+User -> DB : Login
+User -> DB : Create account
+User -> DB : Post tweet
+User -> DB : Follow user
+User -> DB : Direct message
+User -> DB : Search
+User -> DB : Like tweet
+User -> DB : Retweet
+User -> DB : Comment
