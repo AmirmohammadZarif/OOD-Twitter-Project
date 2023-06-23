@@ -1,0 +1,24 @@
+// Twitter Class Diagram
+digraph {
+	graph [rankdir=LR]
+	subgraph cluster_TwitterApp {
+		node [shape=record]
+		edge [arrowhead=open]
+		label=TwitterApp style=rounded
+		bgcolor=lightgray color=black fontcolor=black
+		Twitter [label="{class Twitter | -tweets: List<Tweet> | -users: List<User> | +addTweet(tweet: Tweet): void | +deleteTweet(tweet: Tweet): void | +searchTweets(keyword: String): List<Tweet> | +followUser(user: User): void | +unfollowUser(user: User): void}"]
+		User [label="{class User | -username: String | -password: String | -email: String | -tweets: List<Tweet> | -followers: List<User> | -following: List<User> | +editProfile(username: String, password: String, email: String): void | +createTweet(tweet: Tweet): void | +deleteTweet(tweet: Tweet): void | +getTweets(): List<Tweet> | +getFollowers(): List<User> | +getFollowing(): List<User>}"]
+		Tweet [label="{class Tweet | -id: int | -text: String | -date: Date | -user: User | +getText(): String | +getDate(): Date | +getUser(): User}"]
+		UserService [label="{class UserService | +registerUser(username: String, password: String, email: String): User | +loginUser(username: String, password: String): boolean | +logoutUser(): void | +getUserById(id: int): User | +getUserByUsername(username: String): User}"]
+		TweetService [label="{class TweetService | +createTweet(text: String, user: User): Tweet | +deleteTweet(tweet: Tweet): void | +getTweetById(id: int): Tweet | +searchTweets(keyword: String): List<Tweet>}"]
+		FollowService [label="{class FollowService | +followUser(follower: User, following: User): void | +unfollowUser(follower: User, following: User): void | +getFollowers(user: User): List<User> | +getFollowing(user: User): List<User>}"]
+		NotificationService [label="{class NotificationService | +sendNotification(user: User, message: String): void}"]
+		Twitter -> User
+		User -> Tweet
+		User -> UserService
+		Tweet -> TweetService
+		User -> FollowService
+		FollowService -> User [arrowhead=crow]
+		NotificationService -> User [arrowhead=crow]
+	}
+}
