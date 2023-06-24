@@ -15,6 +15,13 @@ This project contains the following diagrams:
 8. UML code files
 9. Exported images for the diagrams in SVG format
 
+## Requirements
+The binary files for GraphViz should already be installed on the system.
+To install the software requirements, run the following command
+```bash
+pip install graphviz
+```
+
 ## Usage
 This project depends on **GraphViz**.
 To launch the Python files simply run the following command
